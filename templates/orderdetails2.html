@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load socialaccount %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Checkout</title><link rel="icon"
+          type="image/png"
+          href="{% static "brown/assets/img/icons8-bitcoin-48.png" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href={% static "brown/assets/bootstrap/css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome-all.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/ionicons.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome5-overrides.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Features-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Footer-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Login-Form-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Navigation-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/styles.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search.css" %}>
+</head>
+
+<body style="background-color: #dee2e6;">
+<section id="background-section">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+        <div class="container"><a class="navbar-brand" href="{% url 'home' %}"></a>
+            <button data-toggle="collapse" class="navbar-toggler custom-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown" id="dropdown-love"><a class="dropdown-toggle nav-link"
+                                                                        data-toggle="dropdown" aria-expanded="false"
+                                                                      href="{% url 'orders:buy_order'  %}"
+                                                                        style="color: #ffffff;">Buy</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                                                  href="{% url 'orders:Create_Order' %}"><i
+                                class="fa fa-star"></i>Bitcoin</a><a class="dropdown-item" role="presentation"
+                                                                     href="{% url 'orders:Create_Order' %}"><i
+                                <i class="cf cf-eth"></i>Etherium</a><a class="dropdown-item" role="presentation"
+                                                                      href="{% url 'orders:Create_Order' %}"><i
+                                <i class="cf cf-eth"></i>Etherium</a><a class="dropdown-item" role="presentation"
+                                                                      href="{% url 'orders:Create_Order' %}"><i
+                                class="fa fa-star"></i>Dash</a></div>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="sell-link"
+                                                                href="{% url 'orders:sell_order'  %}"
+                                                                style="color: #ffffff;">Sell</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'orders:Orders' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="sign-up-btn"
+                                     style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Account</a>
+                                  <a href="{% url 'account_logout' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log Out</a>
+                            </span>
+                        </li>
+                    {% else %}
+
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'account_signup' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="sign-up-btn"
+                                     style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Sign Up</a>
+                                  <a href="{% url 'account_login' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log In</a>
+                            </span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+<div>
+    <div class="container" style="height: 100vh;">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-auto col-lg-3 text-center order-sm-1 order-md-2 order-lg-2 order-xl-2 border"
+                         style="background-color: #888888;">
+                        <div class="row pt-3" style="background-color: #855723;">
+                            <div class="col" id="supo">
+                                <h5>Order expires in...&nbsp;<strong id="timer">07:59</strong><br></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="form-column">
+                                <h5>Order Summary</h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Order Reference: {{ order_details.order_reference }}<br></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col">
+                                <p>{{ order_details.coin_amount }} BTC<br></p>
+                            </div>
+                            <div class="col">
+                                <p>{{ order_details.price }} KES<br></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-auto col-lg-4 col-xl-4 text-center order-sm-2 order-md-1 order-lg-1 order-xl-1 border"
+                         style="background-color: #ffffff;">
+                        <form id="checkout-form">
+                            {% csrf_token %}
+                            <h3 class="pt-3"> Enter Your Wallet Address<br></h3>
+                            <p style="font-size: 10px;">CoinPesa is not a wallet. Instead, we send the coins to any
+                                wallet you choose.<br>We care about your coins - make sure to only enter your own
+                                personal wallet address.</p>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <p class="text-left">Wallet:</p>
+                                    <div class="form-group"><input id="wallet" name="wallet" type="text" placeholder="3HX65....." required=""
+                                                                   minlength="26" maxlength="35"></div>
+                                    <p>Don’t have a wallet? Try&nbsp;<a
+                                            href="https://www.exodus.io/download/">Exodus</a></p>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <p class="text-left">Enter your Mobile Phone number:</p>
+                                    <div class="form-group"><input id="phone" name="phone" type="number" placeholder="2547XXXXXX"></div>
+                                </div>
+                            </div>
+                            <input id="order_id" name="order_id" type="hidden" value="{{ order_details.id }}">
+                            <div class="row justify-content-center">
+                                <div class="col pb-3">
+                                    <button class="btn btn-primary btn-block" id="checkout-btn">Proceed to payment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ order_details.date_created.timestamp|json_script:"date-created" }}
+<script src={% static "brown/assets/js/jquery.min.js" %}></script>
+<script src={% static "brown/assets/bootstrap/js/bootstrap.min.js" %}></script>
+<script src={% static "brown/assets/js/Faq-by-pomdre.js" %}></script>
+<script src={% static "brown/assets/js/Table-With-Search.js" %}></script>
+<script src={% static "brown/assets/js/timer.js" %}></script>
+
+
+
+
+
+<script>
+        document.getElementById("checkout-btn").addEventListener('click', analyzeText());
+        function analyzeText(){
+            var wallet = document.getElementById('wallet').value;
+            var phone = document.getElementById('phone').value;
+            var order_id = document.getElementById('order_id').value;
+            $.ajax({
+                type: "POST",
+                url: "{% url 'orders:Checkout' %}",   /* Call python function in this script */
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+                        wallet: wallet,
+                        phone:phone,
+                        order_id:order_id,
+                                        },   /* Passing the text data */
+                success: callback
+            });
+        }
+        function callback(response){
+            console.log(response);
+        }
+    </script>
+</body>
+
+</html>

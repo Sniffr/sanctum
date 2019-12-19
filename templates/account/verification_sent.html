@@ -1,0 +1,76 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block body %}
+
+    {% if user.is_authenticated %}
+        {% include "account/snippets/already_logged_in.html" %}
+    {% endif %}
+    <body id="background-login" style="height: 100vh">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+        <div class="container"><a class="navbar-brand" href="{% url 'home' %}"></a>
+            <button data-toggle="collapse" class="navbar-toggler custom-toggler" data-target="#navcol-1"><span
+                    class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown" id="dropdown-love"><a class="dropdown-toggle nav-link"
+                                                                        data-toggle="dropdown" aria-expanded="false"
+                                                                        href="{% url 'orders:Create_Order' %}"
+                                                                        style="color: #ffffff;">Buy</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                                                  href="{% url 'orders:Create_Order' %}"><i
+                                class="cf cf-btc"></i>Bitcoin</a><a class="dropdown-item" role="presentation"
+                                                                    href="{% url 'orders:Create_Order' %}"><i
+                                class="cf cf-eth"></i>Etherium</a><a class="dropdown-item" role="presentation"
+                                                                     href="{% url 'orders:Create_Order' %}"><i
+                                class="cf cf-ltc"></i>Litecoin</a></div>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="sell-link"
+                                                                href="{% url 'orders:Create_Order' %}"
+                                                                style="color: #ffffff;">Sell</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'orders:Orders' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="sign-up-btn"
+                                     style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Account</a>
+                                  <a href="{% url 'account_logout' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log Out</a>
+                            </span>
+                        </li>
+                    {% else %}
+
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'account_signup' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="sign-up-btn"
+                                     style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Sign Up</a>
+                                  <a href="{% url 'account_login' %}" class="btn btn-primary btn-sm rounded"
+                                     role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log In</a>
+                            </span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="login-clean" style="background-color: rgba(241,247,252,0);">
+        <form method="POST" action="#">
+            <div>
+                <h1>Email Sent </h1>
+            </div>
+            <div>
+                <p>An email with the Verification  link has been sent to you. </p>
+                <br>
+                <p>follow the link in the email to finalize setting up your account. </p>
+            </div>
+            <div>
+                <a class="mt-5 btn btn-primary btn-block rounded"href="{% url "home" %}"><i class="fa fa-arrow-left"></i>Home</a>
+            </div>
+        </form>
+    </div>
+
+    </body>
+{% endblock %}

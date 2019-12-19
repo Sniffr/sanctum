@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load socialaccount %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CoinPesa Sell</title><link rel="icon"
+          type="image/png"
+          href="{% static "brown/assets/img/icons8-bitcoin-48.png" %}">
+    <link rel="stylesheet" href={% static "brown/assets/bootstrap/css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome-all.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/ionicons.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome5-overrides.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Features-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Footer-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Login-Form-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Navigation-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/styles.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/cryptofont.min.css" %}>
+</head>
+<!-- Start of Async Drift Code -->
+<script>
+"use strict";
+
+!function() {
+  var t = window.driftt = window.drift = window.driftt || [];
+  if (!t.init) {
+    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n = Array.prototype.slice.call(arguments);
+        return n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+      var i = document.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(o, i);
+    };
+  }
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('t7fpbi9wbznu');
+</script>
+<!-- End of Async Drift Code -->
+<body>
+<section id="background-section">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container"><a class="navbar-brand" href="{% url 'home' %}"></a><button data-toggle="collapse" class="navbar-toggler custom-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown" id="dropdown-love"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="{% url 'orders:buy_order'  %}" style="color: #ffffff;">Buy</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_order' %}"><i class="cf cf-btc"></i>Bitcoin</a><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_eth_order'  %}"><i class="cf cf-eth"></i>Etherium</a><a class="dropdown-item" role="presentation"
+                                    href="{% url 'orders:buy_ltc_order' %}"><i class="cf cf-ltc"></i>Litecoin</a></div>
+                        </li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" id="sell-link" href="{% url 'orders:sell_order'  %}" style="color: #ffffff;">Sell</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'orders:Orders'  %}" class="btn btn-primary btn-sm rounded" role="button" id="sign-up-btn" style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Account</a>
+                                  <a href="{% url 'account_logout'  %}" class="btn btn-primary btn-sm rounded" role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log Out</a>
+                            </span>
+                        </li>
+                        {% else %}
+
+                        <li class="nav-item" role="presentation">
+                            <span><a   href="{% url 'account_signup' %}" class="btn btn-primary btn-sm rounded" role="button" id="sign-up-btn" style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Sign Up</a>
+                                  <a  href="{% url 'account_login' %}" class="btn btn-primary btn-sm rounded" role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log In</a>
+                            </span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</section>
+
+<section id="buy-section" class="mb-5">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>Sell Cryptocurrency</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-center">Select Cryptocurrency&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8 col-md-4 col-lg-4 col-xl-4">
+                            <div class="dropdown">
+                                <button style="background-color: #855723"
+                                        class=" disabled btn btn-primary btn-lg dropdown-toggle btn-block"
+                                        data-toggle="dropdown"
+                                        type="button"><i class="cf cf-ltc"></i>Litecoin</button>
+                                <div class="dropdown-menu btn-block" role="menu"><a class="dropdown-item"
+                                                                                    role="presentation" href="#">
+                                        <i class="cf cf-ltc"></i>Litecoin&nbsp;</a><a class="dropdown-item"
+                                                                                      role="presentation" href="#">
+                                        <i class="cf cf-eth"></i>Etherium</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8 col-md-4 col-lg-4 col-xl-4">
+                            <form action="{% url 'orders:Create_Order' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <p>Prices include fees. Additional charges for methods of payment may apply.</p>
+                                    <div class="input-group border rounded"><input required step="0.00000001"
+                                                                                   id="coin-amount-buy"
+                                                                                   name="coin-amount-sell"
+                                                                                   class="form-control" type="number">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button">LTC</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group border rounded">
+                                        <input required step="0.01" id="price-to-sell" max="70000" min="500" name="price-to-sell"
+                                               class="form-control" type="number">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button">KES</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="coin_type" value="eth" readonly>
+                                <input type="hidden" name="order_type" value="sell" readonly>
+                                <button class="btn btn-primary btn-block" type="submit">Sell Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="footer-clean" style="background-size: cover;background-repeat: no-repeat;">
+     <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Site Map</h3>
+                        <ul>
+                            <li><a href="{% url 'orders:buy_order'  %}">Buy Coins</a></li>
+                            <li><a href="{% url 'orders:sell_order'  %}">Sell Coins</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Legacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="support">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                        <p class="copyright">Archers Den © 2019</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</div>
+{{ buy_price|json_script:"buy-price" }}
+
+<script src={% static "brown/assets/js/jquery.min.js" %}></script>
+<script src={% static "brown/assets/js/buyprice.js" %}></script>
+<script src={% static "brown/assets/bootstrap/js/bootstrap.min.js" %}></script>
+<script src={% static "brown/assets/js/Faq-by-pomdre.js" %}></script>
+<script src={% static "brown/assets/js/Table-With-Search.js" %}></script>
+</body>
+
+</html>

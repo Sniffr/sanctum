@@ -1,0 +1,74 @@
+#sign-up-btn {
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #ffd700;
+  border-color: #ffd700;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #855723;
+  border-color: #855723;
+}
+
+#sign-up-btn {
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #ffd700;
+  border-color: #ffd700;
+}
+
+a:hover {
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+a {
+  color: #ffd700;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+#dropdown-love {
+  color: rgb(255,255,255);
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#log-in-btn {
+  background-color: rgba(133,87,35,0);
+  color: #ffff0;
+}
+
+#sell-link {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.navbar.navbar-dark.navbar-expand-md.navigation-clean-search {
+}
+
+body {
+}
+
+#background-login {
+  background-image: url("../img/Full.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+.custom-toggler.navbar-toggler {
+    border-color: rgb(250, 255, 255);
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,355, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@media (max-width:440px ){
+#header-dynamic{
+  ;font-size: 25px;
+}}

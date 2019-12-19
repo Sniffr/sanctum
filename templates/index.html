@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load socialaccount %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CoinPesa Home</title>
+     <link rel="icon"
+          type="image/png"
+          href="{% static "brown/assets/img/icons8-bitcoin-48.png" %}">
+    <link rel="stylesheet" href={% static "brown/assets/bootstrap/css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome-all.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/font-awesome.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/ionicons.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/fonts/fontawesome5-overrides.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Features-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Footer-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Login-Form-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Navigation-Clean.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Sidebar.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/styles.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search-1.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/Table-With-Search.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/cryptofont.min.css" %}>
+    <link rel="stylesheet" href={% static "brown/assets/css/cryptofont.min.css" %}>
+</head>
+<!-- Start of Async Drift Code -->
+<script>
+"use strict";
+
+!function() {
+  var t = window.driftt = window.drift = window.driftt || [];
+  if (!t.init) {
+    if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+    t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n = Array.prototype.slice.call(arguments);
+        return n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+      var i = document.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(o, i);
+    };
+  }
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('t7fpbi9wbznu');
+</script>
+<!-- End of Async Drift Code -->
+
+<body>
+    <section id="background-section">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container"><a class="navbar-brand" href="{% url 'home' %}"></a><button data-toggle="collapse" class="navbar-toggler custom-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown" id="dropdown-love"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="{% url 'orders:buy_order'  %}" style="color: #ffffff;">Buy</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_order' %}"><i class="cf cf-btc"></i>Bitcoin</a><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_eth_order'  %}"><i class="cf cf-eth"></i>Etherium</a><a class="dropdown-item" role="presentation"
+                                    href="{% url 'orders:buy_ltc_order' %}"><i class="cf cf-ltc"></i>Litecoin</a></div>
+                        </li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" id="sell-link" href="{% url 'orders:sell_order'  %}" style="color: #ffffff;">Sell</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item" role="presentation">
+                            <span><a href="{% url 'orders:Orders'  %}" class="btn btn-primary btn-sm rounded" role="button" id="sign-up-btn" style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Account</a>
+                                  <a href="{% url 'account_logout'  %}" class="btn btn-primary btn-sm rounded" role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log Out</a>
+                            </span>
+                        </li>
+                        {% else %}
+
+                        <li class="nav-item" role="presentation">
+                            <span><a   href="{% url 'account_signup' %}" class="btn btn-primary btn-sm rounded" role="button" id="sign-up-btn" style="padding-right: 20px;padding-bottom: 4px;padding-top: 4px;padding-left: 20px;">Sign Up</a>
+                                  <a  href="{% url 'account_login' %}" class="btn btn-primary btn-sm rounded" role="button" id="log-in-btn" style="padding-right: 20px;padding-left: 20px;">Log In</a>
+                            </span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="header-div">
+            <div class="row text-center justify-content-center">
+                <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+                    <h1 id="header-dynamic"><span><strong>Africa's</strong></span><span id="gold-text"><strong>&nbsp;Premier&nbsp;</strong></span><span><strong>Crypto Currency Site&nbsp;</strong></span></h1>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+               <div class="pt-3 pb-3" >
+
+               </div>
+            {% else %}
+            <div class="row justify-content-center" id="getstarted">
+                <div class="col-sm-auto">
+                    <form id="leadform" method="get" action="{% url 'account_signup' %}">
+                        {% csrf_token %}
+                        <div class="input-group input-group-lg border rounded-circle"><input id="get-started-email" name="email-started" class="form-control" type="email">
+                            <div class="input-group-append"><button class="btn btn-primary" id="get-started-btn" type="submit">Get Started</button></div>
+                        </div>
+                        <p class="text-center">Already have an account&nbsp;<a href="{% url 'account_login' %}">Log In</a>&nbsp;</p>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <section id="buy-section" class="mb-5">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Buy</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center">Selelct Cryptocurrency&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-auto col-md-4 col-lg-4 col-xl-4">
+                                <div class="dropdown"><button class="btn btn-primary btn-lg dropdown-toggle btn-block" data-toggle="dropdown" aria-expanded="false" type="button"><i class="cf cf-btc"></i>Bitcoin</button>
+                                    <div class="dropdown-menu btn-block" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_ltc_order' %}"><i class="cf cf-ltc"></i>Litecoin&nbsp;</a><a class="dropdown-item" role="presentation" href="{% url 'orders:buy_eth_order' %}"><i class="cf cf-eth"></i>Etherium</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-sm-8 col-md-4 col-lg-4 col-xl-4 text-center">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <form name="buy" action="{% url 'orders:Create_Order'  %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <p>Prices include fees. Additional charges for methods of payment may apply.</p>
+                                        <div class="input-group border rounded">
+                                            <input required step="0.00000001" id="coin-amount" name="coin_amount"  class="form-control" type="number">
+                                            <div class="input-group-append"><button class="btn" type="button">BTC</button></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group border rounded">
+                                            <input required step="0.01" id="price-to-pay" max="70000" min="500" name="price" class="form-control" type="number">
+                                            <div class="input-group-append"><button class="btn" type="button">KES</button></div>
+                                        </div>
+                                        <input type="hidden" name="coin_type" value="btc" readonly>
+                                        <input  type="hidden" name="order_type" value="buy"readonly>
+                                    </div><button id="buy-button" class="btn btn-primary btn-block" type="submit">Buy Now</button></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sell-section" class="pb-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 id="gold-text">Sell</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center" style="color: rgb(255,255,255);">Selelct Cryptocurrency&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-auto col-md-4 col-lg-4 col-xl-4">
+                                <div class="dropdown"><button class="btn btn-primary btn-lg dropdown-toggle btn-block" data-toggle="dropdown" aria-expanded="false" type="button"><i class="cf cf-btc"></i>Bitcoin</button>
+                                    <div class="dropdown-menu btn-block" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'orders:sell_ltc_order' %}"><i class="cf cf-ltc"></i>Litecoin&nbsp;</a><a class="dropdown-item" role="presentation" href="{% url 'orders:sell_eth_order' %}"><i class="cf cf-eth"></i>Etherium</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-sm-auto col-md-4 col-lg-4 col-xl-4 text-center">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                               <form name="sell"action="{% url 'orders:Create_Order'  %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <p style="color: rgb(255,255,255);">Choose how much you want to sell</p>
+                                        <div class="input-group border rounded">
+                                            <input required step="0.00000001" id="coin-amount-buy" name="coin-amount-sell" class="form-control" type="number">
+                                            <div class="input-group-append"><button class="btn" type="button" style="color: rgb(255,255,255);">BTC</button></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group border rounded"><input max="70000" min="500" required step="0.01" id="price-to-sell" name="price-to-sell" class="form-control" type="number">
+                                            <div class="input-group-append"><button class="btn" type="button" style="color: rgb(255,255,255);">KES</button></div>
+                                        </div>
+                                       <input type="hidden" name="coin_type" value="btc" readonly>
+                                        <input  type="hidden" name="order_type" value="sell"readonly>
+                                    </div><button id="sell-button" class="btn btn-primary btn-block" type="submit">Sell Now</button></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="features-clean">
+        <div class="container">
+            <div class="intro"></div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-rocket icon"></i>
+                    <h3 class="name"><strong>Instant delivery</strong></h3>
+                    <p class="description">Place your order and get your coins instantly. No deposits required</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="far fa-id-card icon"></i>
+                    <h3 class="name"><strong>No verification needed</strong></h3>
+                    <p class="description">We place our trust in you so you dont need to give us your personal data&nbsp;</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-mobile-phone icon"></i>
+                    <h3 class="name"><strong>Convinient</strong></h3>
+                    <p class="description">Get Bitcoin from the comfort of your phone no hassle required&nbsp;</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="icon ion-speedometer icon"></i>
+                    <h3 class="name"><strong>High Spending limits&nbsp;</strong></h3>
+                    <p class="description">Buy as much as you want no holds barred</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fas fa-coins icon"></i>
+                    <h3 class="name"><strong>Get all your favourite coins</strong></h3>
+                    <p class="description">get an armada of coins form BTC,ETH,XRP and many more</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="far fa-thumbs-up icon"></i>
+                    <h3 class="name"><strong>Quality Guranteed</strong></h3>
+                    <p class="description">Get high quality service that will leave you saying wow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-clean" style="background-size: cover;background-repeat: no-repeat;">
+         <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Site Map</h3>
+                        <ul>
+                            <li><a href="{% url 'orders:buy_order'  %}">Buy Coins</a></li>
+                            <li><a href="{% url 'orders:sell_order'  %}">Sell Coins</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Legacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-md-3 item">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="support">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                        <p class="copyright">Archers Den © 2019</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% if buy_price %}
+        {{ buy_price|json_script:"buy-price" }}
+    {% endif %}
+    {% if sell_price %}
+        {{ sell_price|json_script:"sell-price" }}
+    {% endif %}
+
+    <script src={% static "brown/assets/js/jquery.min.js" %} ></script>
+    <script src={% static "brown/assets/bootstrap/js/bootstrap.min.js" %}></script>
+    <script src={% static "brown/assets/js/Faq-by-pomdre.js" %}></script>
+    <script src={% static "brown/assets/js/Table-With-Search.js" %}></script>
+    <script src={% static "brown/assets/js/buyprice.js" %}></script>
+
+
+</body>
+
+</html>
