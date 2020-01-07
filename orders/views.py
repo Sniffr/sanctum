@@ -147,7 +147,7 @@ def CreateOrder(request):
             try:
                 if request.POST['order_type'] == "buy":
                     selected_coin = request.POST['coin_type']
-                    coin = Coins.objects.get(code__contains=selected_coin)
+                    coin = Coins.objects.get(code__contains=selected_coin.upper())
                     user = get_user_model().objects.get(id=request.user.id)
                     if request.POST['coin_amount']:
                         coin_amount = float(request.POST['coin_amount'])
